@@ -12,6 +12,18 @@ Summary: the SSH library
 libssh2 is a library implementing the SSH2 protocol, available under the revised BSD license.
 
 
+Current build status
+====================
+
+Linux: [![Circle CI](https://circleci.com/gh/conda-forge/libssh2-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/libssh2-feedstock)
+OSX: [![TravisCI](https://travis-ci.org/conda-forge/libssh2-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/libssh2-feedstock)
+Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/libssh2-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/libssh2-feedstock/branch/master)
+
+Current release info
+====================
+Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/libssh2/badges/version.svg)](https://anaconda.org/conda-forge/libssh2)
+Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/libssh2/badges/downloads.svg)](https://anaconda.org/conda-forge/libssh2)
+
 Installing libssh2
 ==================
 
@@ -32,7 +44,6 @@ It is possible to list all of the versions of `libssh2` available on your platfo
 ```
 conda search libssh2 --channel conda-forge
 ```
-
 
 
 About conda-forge
@@ -68,18 +79,6 @@ Terminology
 
 **conda-forge** - the place where the feedstock and smithy live and work to
                   produce the finished article (built conda distributions)
-
-Current build status
-====================
-
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/libssh2-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/libssh2-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/libssh2-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/libssh2-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/libssh2-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/libssh2-feedstock/branch/master)
-
-Current release info
-====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/libssh2/badges/version.svg)](https://anaconda.org/conda-forge/libssh2)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/libssh2/badges/downloads.svg)](https://anaconda.org/conda-forge/libssh2)
 
 
 Updating libssh2-feedstock
