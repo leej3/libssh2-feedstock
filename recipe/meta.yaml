@@ -1,6 +1,6 @@
 {% set name = "libssh2" %}
-{% set version = "1.7.0" %}
-{% set sha256 = "a6de91a743c57c2d4168be9ce70f9a4ef5a58d12ffe7b0c0b393ed8f620f3f7a" %}
+{% set version = "1.8.0" %}
+{% set sha256 = "39f34e2f6835f4b992cafe8625073a88e5a28ba78f83e8099610a7b3af4676d4" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +8,7 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: https://github.com/{{ name }}/{{ name }}/archive/{{ name }}-{{ version }}.tar.gz
+  url: https://www.libssh2.org/download/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
