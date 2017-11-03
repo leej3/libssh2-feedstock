@@ -13,7 +13,7 @@ cmake -D CMAKE_INSTALL_PREFIX=$PREFIX \
       $SRC_DIR
 
 make -j${CPU_COUNT}
-# ctest
+# ctest  # fails on the docker image
 make install
 
 cmake -D CMAKE_INSTALL_PREFIX=$PREFIX \
@@ -25,5 +25,5 @@ cmake -D CMAKE_INSTALL_PREFIX=$PREFIX \
       $SRC_DIR
 
 make -j${CPU_COUNT}
-# ctest
+# ctest  # fails on the docker image
 make install
