@@ -1,9 +1,29 @@
 #!/bin/bash
 
+# We use a repackaged cmake from elsewhere to break a build cycle.
+export PATH=${PREFIX}/cmake-bin/bin:${PATH}
+
 mkdir build && cd build
 
-cmake .. -DCMAKE_INSTALL_PREFIX=$PREFIX -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_LIBDIR=lib
-cmake --build . --config Release --target install
+cmake -D CMAKE_INSTALL_PREFIX=$PREFIX \
+      -D BUILD_SHARED_LIBS=OFF \
+      -D CRYPTO_BACKEND=OpenSSL \
+      -D CMAKE_INSTALL_LIBDIR=lib \
+      -D ENABLE_ZLIB_COMPRESSION=ON \
+      $SRC_DIR
 
-cmake .. -DCMAKE_INSTALL_PREFIX=$PREFIX -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_LIBDIR=lib
-cmake --build . --config Release --target install
+make -j${CPU_COUNT}
+# ctest  # fails on the docker image
+make install
+
+cmake -D CMAKE_INSTALL_PREFIX=$PREFIX \
+      -D BUILD_SHARED_LIBS=ON \
+      -D CRYPTO_BACKEND=OpenSSL \
+      -D CMAKE_INSTALL_LIBDIR=lib \
+      -D ENABLE_ZLIB_COMPRESSION=ON \
+      -D CMAKE_INSTALL_RPATH=$PREFIX/lib \
+      $SRC_DIR
+
+make -j${CPU_COUNT}
+# ctest  # fails on the docker image
+make install
