@@ -10,26 +10,19 @@ source:
 
 build:
   number: 2
-  features:
-      - vc9  # [win and py27]
-      - vc14  # [win and (py35 or py36)]
 
 requirements:
   build:
-    - python  # [win]
+    - {{ compiler('c') }}
+  host:
     # This breals a dependency cycle:
     # curl->libssh2->cmake->curl
     - cmake-binary
-    - openssl 1.0.*
-    - toolchain
-    - zlib 1.2.11
-    - vc 9  # [win and py27]
-    - vc 14  # [win and (py35 or py36)]
+    - openssl
+    - zlib
   run:
-    - openssl 1.0.*
-    - zlib 1.2.11
-    - vc 9  # [win and py27]
-    - vc 14  # [win and (py35 or py36)]
+    - openssl
+    - zlib
 
 test:
   commands:
