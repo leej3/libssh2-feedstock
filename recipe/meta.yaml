@@ -16,6 +16,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - make  # [unix]
   host:
     # This breals a dependency cycle:
     # curl->libssh2->cmake->curl
