@@ -20,7 +20,8 @@ requirements:
   host:
     # This breals a dependency cycle:
     # curl->libssh2->cmake->curl
-    - cmake-binary
+    - cmake-binary        # [not aarch64]
+    - cmake_nosystemcurl  # [aarch64]
     - openssl
     - zlib
   run:
