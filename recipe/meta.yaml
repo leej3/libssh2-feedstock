@@ -9,19 +9,20 @@ source:
   sha256: 39f34e2f6835f4b992cafe8625073a88e5a28ba78f83e8099610a7b3af4676d4
 
 build:
-  number: 1003
+  number: 1004
   run_exports:
     - {{ pin_subpackage('libssh2') }}
 
 requirements:
   build:
     - {{ compiler('c') }}
-    - make  # [unix]
+    - make   # [unix]
+    - openssl 1.0         # [aarch64]            
+    - cmake_nosystemcurl  # [aarch64]
   host:
     # This breals a dependency cycle:
     # curl->libssh2->cmake->curl
     - cmake-binary        # [not aarch64]
-    - cmake_nosystemcurl  # [aarch64]
     - openssl
     - zlib
   run:
