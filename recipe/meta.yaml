@@ -1,4 +1,4 @@
-{% set version = "1.8.2" %}
+{% set version = "1.9.0" %}
 
 package:
   name: libssh2
@@ -6,23 +6,32 @@ package:
 
 source:
   url: https://www.libssh2.org/download/libssh2-{{ version }}.tar.gz
-  sha256: 088307d9f6b6c4b8c13f34602e8ff65d21c2dc4d55284dfe15d502c4ee190d67
+  sha256: d5fb8bd563305fd1074dda90bd053fb2d29fc4bce048d182f96eaa466dfadafd
+  patches:
+    # patch for CVE-2019-17498
+    # https://nvd.nist.gov/vuln/detail/CVE-2019-17498
+    # patch from the Fedora project
+    # https://src.fedoraproject.org/rpms/libssh2/c/41525baf
+    # merged into upstream in with small modification in:
+    # https://github.com/libssh2/libssh2/pull/402
+    - 0001-libssh2-1.9.0-CVE-2019-17498.patch
 
 build:
-  number: 2
+  number: 1
+  skip: True  # [win and vc<14]
   run_exports:
     - {{ pin_subpackage('libssh2') }}
 
 requirements:
   build:
-    - {{ compiler('c') }}
-    - make   # [unix]
-    - openssl 1.0         # [aarch64]            
-    - cmake_nosystemcurl  # [aarch64]
-  host:
     # This breals a dependency cycle:
     # curl->libssh2->cmake->curl
-    - cmake-binary        # [not aarch64]
+    - cmake-binary     # [win]
+    - cmake-no-system  # [not win]
+    - {{ compiler('c') }}
+    - ninja  # [win]
+    - make   # [unix]
+  host:
     - openssl
     - zlib
   run:
