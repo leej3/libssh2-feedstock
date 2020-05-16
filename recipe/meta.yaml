@@ -15,6 +15,7 @@ source:
     # merged into upstream in with small modification in:
     # https://github.com/libssh2/libssh2/pull/402
     - 0001-libssh2-1.9.0-CVE-2019-17498.patch
+    - 246c7cb0184b9e1a882c753b412825799c7a9118.patch
 
 build:
   number: 1
