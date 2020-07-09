@@ -5,7 +5,7 @@ Home: https://www.libssh2.org/
 
 Package license: BSD-3-Clause
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: the SSH library
 
