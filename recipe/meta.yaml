@@ -57,8 +57,8 @@ outputs:
 
   - name: libssh2-static
     build:
-      skip: true  # [win]
     script: build_static.sh  # [unix]
+    script: bld_static.bat  # [win]
     requirements:
       build:
         # This breals a dependency cycle:
@@ -74,7 +74,8 @@ outputs:
         - zlib
     test:
       commands:
-        - test -f $PREFIX/lib/libssh2.a          # [not win]
+        - test -f $PREFIX/lib/libssh2.a                         # [not win]
+        - if not exist %LIBRARY_LIB%\libssh2_static.lib exit 1  # [win]
 
 about:
   home: https://www.libssh2.org/
