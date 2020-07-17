@@ -18,9 +18,7 @@ source:
     - 246c7cb0184b9e1a882c753b412825799c7a9118.patch
 
 build:
-  number: 3
-  run_exports:
-    - {{ pin_subpackage('libssh2') }}
+  number: 4
 
 requirements:
   build:
@@ -38,19 +36,46 @@ requirements:
     - openssl
     - zlib
 
-test:
-  commands:
-    - test -f $PREFIX/include/libssh2.h              # [not win]
-    - test -f $PREFIX/include/libssh2_publickey.h    # [not win]
-    - test -f $PREFIX/include/libssh2_sftp.h         # [not win]
+outputs:
+  - name: libssh2
+    build:
+      run_exports:
+      - {{ pin_subpackage('libssh2') }}
+    test:
+      commands:
+        - test -f $PREFIX/include/libssh2.h              # [not win]
+        - test -f $PREFIX/include/libssh2_publickey.h    # [not win]
+        - test -f $PREFIX/include/libssh2_sftp.h         # [not win]
 
-    - test ! -f $PREFIX/lib/libssh2.a          # [not win]
-    - test -f $PREFIX/lib/libssh2${SHLIB_EXT}  # [not win]
+        - test ! -f $PREFIX/lib/libssh2.a          # [not win]
+        - test -f $PREFIX/lib/libssh2${SHLIB_EXT}  # [not win]
 
-    - if not exist %LIBRARY_INC%\\libssh2.h           exit 1  # [win]
-    - if not exist %LIBRARY_INC%\\libssh2_publickey.h exit 1  # [win]
-    - if not exist %LIBRARY_INC%\\libssh2_sftp.h      exit 1  # [win]
-    - if not exist %LIBRARY_LIB%\\libssh2.lib         exit 1  # [win]
+        - if not exist %LIBRARY_INC%\\libssh2.h           exit 1  # [win]
+        - if not exist %LIBRARY_INC%\\libssh2_publickey.h exit 1  # [win]
+        - if not exist %LIBRARY_INC%\\libssh2_sftp.h      exit 1  # [win]
+        - if not exist %LIBRARY_LIB%\\libssh2.lib         exit 1  # [win]
+
+  - name: libssh2-static
+    build:
+    script: build_static.sh  # [unix]
+    script: bld_static.bat  # [win]
+    requirements:
+      build:
+        # This breals a dependency cycle:
+        # curl->libssh2->cmake->curl
+        - cmake-binary     # [win]
+        - cmake-no-system  # [not win]
+        - {{ compiler('c') }}
+        - ninja  # [win]
+        - make   # [unix]
+      host:
+        - libssh2
+        - openssl
+        - zlib
+    test:
+      commands:
+        - test -f $PREFIX/lib/libssh2.a                         # [not win]
+        - if not exist %LIBRARY_LIB%\libssh2_static.lib exit 1  # [win]
 
 about:
   home: https://www.libssh2.org/
