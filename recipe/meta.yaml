@@ -26,6 +26,7 @@ requirements:
     # curl->libssh2->cmake->curl
     - cmake-binary     # [win]
     - cmake-no-system  # [not win]
+    - libtool  # [unix]
     - {{ compiler('c') }}
     - ninja  # [win]
     - make   # [unix]
