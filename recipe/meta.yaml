@@ -27,7 +27,8 @@ requirements:
     - cmake-binary     # [win]
     - cmake-no-system  # [not win]
     - libtool  # [unix]
-    - {{ compiler('c') }}
+    - {{ compiler('c') }}   # [not (osx and arm64)]
+    - {{ compiler('clang_bootstrap') }}   # [osx and arm64]
     - ninja  # [win]
     - make   # [unix]
   host:
