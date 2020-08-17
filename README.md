@@ -16,7 +16,21 @@ Current build status
 ====================
 
 
-<table>
+<table><tr>
+    <td>Travis</td>
+    <td>
+      <a href="https://travis-ci.com/conda-forge/libssh2-feedstock">
+        <img alt="macOS" src="https://img.shields.io/travis/com/conda-forge/libssh2-feedstock/master.svg?label=macOS">
+      </a>
+    </td>
+  </tr><tr>
+    <td>Drone</td>
+    <td>
+      <a href="https://cloud.drone.io/conda-forge/libssh2-feedstock">
+        <img alt="linux" src="https://img.shields.io/drone/build/conda-forge/libssh2-feedstock/master.svg?label=Linux">
+      </a>
+    </td>
+  </tr>
     
   <tr>
     <td>Azure</td>
@@ -30,6 +44,13 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
+              <td>linux_64_target_platformlinux-64</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=573&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libssh2-feedstock?branchName=master&jobName=linux&configuration=linux_64_target_platformlinux-64" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
               <td>linux_aarch64_target_platformlinux-aarch64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=573&branchName=master">
@@ -44,24 +65,24 @@ Current build status
                 </a>
               </td>
             </tr><tr>
-              <td>linux_target_platformlinux-64</td>
+              <td>osx_64_target_platformosx-64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=573&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libssh2-feedstock?branchName=master&jobName=linux&configuration=linux_target_platformlinux-64" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libssh2-feedstock?branchName=master&jobName=osx&configuration=osx_64_target_platformosx-64" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_target_platformosx-64</td>
+              <td>osx_arm64_target_platformosx-arm64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=573&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libssh2-feedstock?branchName=master&jobName=osx&configuration=osx_target_platformosx-64" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libssh2-feedstock?branchName=master&jobName=osx&configuration=osx_arm64_target_platformosx-arm64" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_target_platformwin-64</td>
+              <td>win_64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=573&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libssh2-feedstock?branchName=master&jobName=win&configuration=win_target_platformwin-64" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libssh2-feedstock?branchName=master&jobName=win&configuration=win_64_" alt="variant">
                 </a>
               </td>
             </tr>
@@ -78,6 +99,7 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-libssh2-green.svg)](https://anaconda.org/conda-forge/libssh2) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libssh2.svg)](https://anaconda.org/conda-forge/libssh2) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libssh2.svg)](https://anaconda.org/conda-forge/libssh2) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libssh2.svg)](https://anaconda.org/conda-forge/libssh2) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-libssh2--static-green.svg)](https://anaconda.org/conda-forge/libssh2-static) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libssh2-static.svg)](https://anaconda.org/conda-forge/libssh2-static) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libssh2-static.svg)](https://anaconda.org/conda-forge/libssh2-static) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libssh2-static.svg)](https://anaconda.org/conda-forge/libssh2-static) |
 
 Installing libssh2
 ==================
@@ -88,10 +110,10 @@ Installing `libssh2` from the `conda-forge` channel can be achieved by adding `c
 conda config --add channels conda-forge
 ```
 
-Once the `conda-forge` channel has been enabled, `libssh2` can be installed with:
+Once the `conda-forge` channel has been enabled, `libssh2, libssh2-static` can be installed with:
 
 ```
-conda install libssh2
+conda install libssh2 libssh2-static
 ```
 
 It is possible to list all of the versions of `libssh2` available on your platform with:
