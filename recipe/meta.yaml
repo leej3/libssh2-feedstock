@@ -64,10 +64,12 @@ outputs:
     script: bld_static.bat  # [win]
     requirements:
       build:
-        # This breals a dependency cycle:
+        # This breaks a dependency cycle:
         # curl->libssh2->cmake->curl
+{% if bootstrapping != 'yes' %}
+        - cmake            # [not win]
+{% endif %}
         - cmake-binary     # [win]
-        - cmake-no-system  # [not win]
         - {{ compiler('c') }}
         - ninja  # [win]
         - make   # [unix]
