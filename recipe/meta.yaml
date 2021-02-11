@@ -18,7 +18,12 @@ source:
     - 246c7cb0184b9e1a882c753b412825799c7a9118.patch
 
 build:
+{% if bootstrapping == 'yes' %}
+  number: 0
+  string: h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}_bootstrapping
+{% else %}
   number: 5
+{% endif %}
 
 requirements:
   build:
