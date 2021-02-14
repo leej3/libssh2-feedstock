@@ -31,7 +31,6 @@ requirements:
     # curl->libssh2->cmake->curl
 {% if bootstrapping != 'yes' %}
     - cmake            # [not win]
-{% endif %}
     - cmake-binary     # [win]
     - {{ compiler('c') }}   # [not (osx and arm64)]
     - {{ compiler('clang_bootstrap') }}   # [osx and arm64]
@@ -43,6 +42,7 @@ requirements:
   run:
     - openssl
     - zlib
+{% endif %}
 
 outputs:
   - name: libssh2
@@ -73,7 +73,6 @@ outputs:
         # curl->libssh2->cmake->curl
 {% if bootstrapping != 'yes' %}
         - cmake            # [not win]
-{% endif %}
         - cmake-binary     # [win]
         - {{ compiler('c') }}
         - ninja  # [win]
@@ -82,6 +81,7 @@ outputs:
         - libssh2
         - openssl
         - zlib
+{% endif %}
     test:
       commands:
         - test -f $PREFIX/lib/libssh2.a                         # [not win]
